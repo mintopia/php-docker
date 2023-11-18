@@ -1,0 +1,34 @@
+FROM php:8.2-fpm-alpine
+LABEL maintainer="jess@mintopia.net"
+
+RUN apk update \
+    && apk --no-cache add \
+        ${PHPIZE_DEPS} \
+        freetype-dev\
+        libpng-dev \
+        libjpeg-turbo-dev \
+    && pecl install -o -f redis \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-install \
+        bcmath \
+        pdo_mysql \
+    && docker-php-ext-configure gd \
+        --with-freetype \
+        --with-jpeg \
+    && docker-php-ext-install gd \
+    && docker-php-ext-enable redis \
+    && apk del --no-cache ${PHPIZE_DEPS} \
+    && rm -vrf /tmp/pear /var/cache/apk/* \
+    && mkdir -p /tmp \
+    && chown -R 1000:1000 /tmp
+
+COPY fpm.conf /usr/local/etc/php-fpm.d/www.conf
+
+WORKDIR /var/www/
+USER 1000
+ENV \
+    FPM_PM_MAX_CHILDREN=5 \
+    FPM_PM_START_SERVERS=2 \
+    FPM_PM_MIN_SPARE_SERVERS=1 \
+    FPM_PM_MAX_SPARE_SERVERS=3 \
+    HOME=/tmp
