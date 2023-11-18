@@ -2,6 +2,10 @@ name: Publish Docker Images
 
 on:
   push:
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - .env.example
     branches:
       - master
       - develop
