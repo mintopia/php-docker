@@ -6,4 +6,7 @@ COPY default.conf /etc/nginx/templates/conf.d/default.conf.template
 
 ENV \
     STATUS_ALLOW=127.0.0.1 \
+    NGINX_STATUS_PATH=/nginx-status \
+    FPM_STATUS_PATH=/fpm-status \
+    FPM_PING_PATH=/fpm-ping \
     NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx

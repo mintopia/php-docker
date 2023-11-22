@@ -10,7 +10,7 @@ services:
     volumes:
       - ./public:/var/www/public
     ports:
-      - 8000:80
+      - 8100:80
     depends_on:
       - php-fpm
 
