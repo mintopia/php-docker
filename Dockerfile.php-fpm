@@ -33,4 +33,5 @@ ENV \
     FPM_PM_MAX_SPARE_SERVERS=3 \
     FPM_STATUS_PATH=/fpm-status \
     FPM_PING_PATH=/fpm-ping \
+    FPM_TIMEOUT=0 \
     HOME=/tmp
