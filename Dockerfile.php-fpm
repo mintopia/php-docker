@@ -17,6 +17,8 @@ RUN apk update \
         --with-jpeg \
     && docker-php-ext-install gd \
     && docker-php-ext-enable redis \
+    && docker-php-ext-configure pcntl --enable-pcntl \
+    && docker-php-ext-install pcntl \
     && apk del --no-cache ${PHPIZE_DEPS} \
     && rm -vrf /tmp/pear /var/cache/apk/* \
     && mkdir -p /tmp \
