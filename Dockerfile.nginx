@@ -9,4 +9,6 @@ ENV \
     NGINX_STATUS_PATH=/nginx-status \
     FPM_STATUS_PATH=/fpm-status \
     FPM_PING_PATH=/fpm-ping \
-    NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
+    NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx \
+    FPM_HOSTNAME=php-fpm \
+    FPM_PORT=9000
