@@ -97,6 +97,7 @@ jobs:
           tags: |
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
             type=raw,value=develop,enable=${{ github.ref == format('refs/heads/{0}', 'develop') }}
+            type=raw,value=php8.4,enable=${{ github.ref == format('refs/heads/{0}', 'php8.4') }}
             type=semver,pattern={{version}}
 
       - name: Build and push Docker image
