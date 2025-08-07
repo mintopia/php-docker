@@ -1,4 +1,4 @@
-FROM nginx:1.25.3
+FROM nginx:1.29
 LABEL maintainer="jess@mintopia.net"
 
 COPY nginx.conf /etc/nginx/templates/nginx.conf.template
